@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ODEPA_.Controller
 {
-    public class Output
+    public class ProductoControl
     {
     }
 }
