@@ -17,12 +17,12 @@ namespace ODEPA_.Model
         private string sellAdress;
         private double latitude;
         private double longitude;
-        private Bitmap productImage;
+        private byte[] productImage;
 
         public Producto() { }
 
         public Producto(int productID, string productName, int producerID, int stock, string productType, 
-            int price, string sellAdress, double latitude, double longitude, Bitmap productImage)
+            int price, string sellAdress, double latitude, double longitude, byte[] productImage)
         {
             this.productID = productID;
             this.productName = productName;
@@ -45,6 +45,6 @@ namespace ODEPA_.Model
         public string SellAdress { get => sellAdress; set => sellAdress = value; }
         public double Latitude { get => latitude; set => latitude = value; }
         public double Longitude { get => longitude; set => longitude = value; }
-        public Bitmap ProductImage { get => productImage; set => productImage = value; }
+        public byte[] ProductImage { get => productImage; set => productImage = value; }
     }
 }
