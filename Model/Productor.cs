@@ -12,31 +12,22 @@ namespace ODEPA_.Model
         private string prutid;
         private string pnombre;
         private string pcorreo;
-        private byte[] pimage;
         private string padress;
-        private float latitude;
-        private float longitude;
 
         public Productor() { }
-        public Productor(int prut, string prutid, string pnombre, string pcorreo, byte[] pimage, string padress, float latitude, float longitude)
+        public Productor(int prut, string prutid, string pnombre, string pcorreo, string padress)
         {
             this.Prut = prut;
             this.Prutid = prutid;
             this.Pnombre = pnombre;
             this.Pcorreo = pcorreo;
-            this.Pimage = pimage;
             this.Padress = padress;
-            this.Latitude = latitude;
-            this.Longitude = longitude;
         }
 
         public int Prut { get => prut; set => prut = value; }
         public string Prutid { get => prutid; set => prutid = value; }
         public string Pnombre { get => pnombre; set => pnombre = value; }
         public string Pcorreo { get => pcorreo; set => pcorreo = value; }
-        public byte[] Pimage { get => pimage; set => pimage = value; }
         public string Padress { get => padress; set => padress = value; }
-        public float Latitude { get => latitude; set => latitude = value; }
-        public float Longitude { get => longitude; set => longitude = value; }
     }
 }

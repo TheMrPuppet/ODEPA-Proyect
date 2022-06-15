@@ -11,10 +11,10 @@ namespace ODEPA_.Model
         private int clienterut;
         private int producerrut;
         private DateTime fecha;
-        private int total;
+        private double total;
 
         public Venta() { }
-        public Venta(int ventaid, int clienterut, int producerrut, DateTime fecha, int total)
+        public Venta(int ventaid, int clienterut, int producerrut, DateTime fecha, double total)
         {
             this.ventaid = ventaid;
             this.clienterut = clienterut;
@@ -27,6 +27,6 @@ namespace ODEPA_.Model
         public int Clienterut { get => clienterut; set => clienterut = value; }
         public int Producerrut { get => producerrut; set => producerrut = value; }
         public DateTime Fecha { get => fecha; set => fecha = value; }
-        public int Total { get => total; set => total = value; }
+        public double Total { get => total; set => total = value; }
     }
 }
