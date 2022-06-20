@@ -42,6 +42,40 @@ namespace ODEPA_.Controllers
             }
         }
 
+        public bool IsCorreoThere(string correo)
+        {
+            db = new Connection();
+            SqlCommand cmd = new();
+            cmd.CommandType = CommandType.Text;
+            string sql;
+            bool issame = false;
+            try
+            {
+                sql = $"Select * from cuenta;";
+
+
+                cmd.CommandText = sql;
+
+                DataTable dt = db.EjecutarConsulta(cmd);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    if (dt.Rows[i]["correo"].ToString() == correo)
+                    {
+                        issame = true;
+                        break;
+                    }
+                }
+                return issame;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+
+            }
+        }
+
         public bool UpdatePW(string correo, string pw)
         {
             db = new Connection();
@@ -89,6 +123,7 @@ namespace ODEPA_.Controllers
                     if (dt.Rows[i]["pw"].ToString() == pw)
                     {
                         iscorrect= true;
+                        break;
                     }
                 }
                 return iscorrect;
