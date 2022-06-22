@@ -21,7 +21,7 @@ namespace ODEPA_.Controllers
             Connection db;
             string sql = "select * from productos;";
             if (id != -1)
-                sql = "select * from productos where productid=" + id + " ;";
+                sql = "select * from productos where producerid=" + id + " ;";
             try
             {
 

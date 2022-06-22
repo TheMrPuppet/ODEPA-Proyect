@@ -153,8 +153,6 @@ namespace ODEPA_.Controllers
                     "       " + item.Price + ", " +
                     "       '" + item.SellAdress + "', " +
                     "       '" + item.ProductImage + "');";
-                SqlParameter param = cmd.Parameters.Add("@Image", SqlDbType.VarBinary);
-                param.Value = item.ProductImage;
                 cmd.CommandText = sql;
 
                 db.EjecutarConsulta(cmd);
