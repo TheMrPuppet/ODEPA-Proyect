@@ -15,12 +15,12 @@ namespace ODEPA_.Model
         private string productType;
         private float price;
         private string sellAdress;
-        private byte[] productImage;
+        private string productImage;
 
         public Producto() { }
 
         public Producto(int productID, string productName, int producerID, int stock, string productType,
-            float price, string sellAdress, byte[] productImage)
+            float price, string sellAdress, string productImage)
         {
             this.productID = productID;
             this.productName = productName;
@@ -39,13 +39,7 @@ namespace ODEPA_.Model
         public string ProductType { get => productType; set => productType = value; }
         public float Price { get => price; set => price = value; }
         public string SellAdress { get => sellAdress; set => sellAdress = value; }
-
-        internal bool Actualizar(int productID, string productName, int stock, string productType, float price, string productImage)
-        {
-            throw new NotImplementedException();
-        }
-
-        public byte[] ProductImage { get => productImage; set => productImage = value; }
+        public string ProductImage { get => productImage; set => productImage = value; }
     }
 
     //-------------------MÉTODOS--------------------------------------------------

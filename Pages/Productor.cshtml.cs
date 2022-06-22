@@ -26,19 +26,7 @@ namespace ODEPA_.Pages
             p.ProductType = Request.Form["tipo"];
             p.Price = float.Parse(Request.Form["precio"]);
             p.SellAdress = Request.Form["adress"];
-            if(Request.Form.Files.Count != 0)
-            {
-                foreach(var img in Request.Form.Files)
-                {
-                    MemoryStream ms = new();
-                    img.CopyTo(ms);
-                    p.ProductImage = ms.ToArray();
-
-                    ms.Close();
-                    ms.Dispose();
-                }
-                
-            }
+            p.ProductImage = Request.Form["url"];
             input.InsertProducto(p);
         }
     }

@@ -2,22 +2,20 @@
 @model ODEPA_.Pages.ProductorModel
 @using ODEPA_.Model
 @using ODEPA_.Controllers
+@using System.IO;
+@using System.Drawing;
 @{
 
 }
 
-<form method="post"
-      enctype="multipart/form-data">
+<form method="post">
     <div style="text-align:left">
         Nombre: <input type="text" id="nombre" name="nombre" required />
         Stock: <input type="number" id="stock" name="stock" required />
         Tipo: <input type="text" id="tipo" name="tipo" required />
         Precio: <input type="number" id="precio" name="precio" required />
         Dirección: <input type="text" id="adress" name="adress" required />
-
-        Imagen: <input type="file" id="file1"
-                       name="file1"
-                       multiple="multiple" />
+        Url de Imagen: <input type="text" id="url" name="url" required />
         <button type="submit">Agregar Producto</button>
     </div>
 </form>
@@ -49,7 +47,7 @@
             <td>@c.Stock</td>
             <td>@c.Price</td>
             <td>@c.SellAdress</td>
-            <td>@c.ProductImage</td>
+            <img src=@c.ProductImage/>
             <td><a href="Actualizar?Id=@c.ProductID">Actualizar</a></td>
             <td><a href="Eliminar?Id=@c.ProductID">Eliminar</a></td>
 

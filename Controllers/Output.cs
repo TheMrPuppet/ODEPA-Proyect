@@ -7,6 +7,8 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
+using System.IO;
+using System.Drawing;
 
 namespace ODEPA_.Controllers
 {
@@ -18,7 +20,6 @@ namespace ODEPA_.Controllers
             Producto product;
             Connection db;
             string sql = "select * from productos;";
-            string sql2 = "select * from productos;";
             if (id != -1)
                 sql = "select * from productos where productid=" + id + " ;";
             try
@@ -43,7 +44,7 @@ namespace ODEPA_.Controllers
                     product.ProductType = dt.Rows[i]["type"].ToString();
                     product.Price = float.Parse(dt.Rows[i]["price"].ToString());
                     product.SellAdress = dt.Rows[i]["selladress"].ToString();
-
+                    product.ProductImage = dt.Rows[i]["productimage"].ToString();
                     lista.Add(product);
                 }
                 return lista;
@@ -177,7 +178,6 @@ namespace ODEPA_.Controllers
 
             }
         }
-
 
 
     }

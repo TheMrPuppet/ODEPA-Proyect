@@ -152,7 +152,7 @@ namespace ODEPA_.Controllers
                     "       '" + item.ProductType + "', " +
                     "       " + item.Price + ", " +
                     "       '" + item.SellAdress + "', " +
-                    "       @Image);";
+                    "       '" + item.ProductImage + "');";
                 SqlParameter param = cmd.Parameters.Add("@Image", SqlDbType.VarBinary);
                 param.Value = item.ProductImage;
                 cmd.CommandText = sql;
@@ -161,9 +161,11 @@ namespace ODEPA_.Controllers
 
                 return true;
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
                 Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ErrorCode);
+                Console.WriteLine(ex.Number);
                 return false;
 
             }
