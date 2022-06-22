@@ -21,13 +21,13 @@ namespace ODEPA_.Pages
         {
             Input input = new();
             Producto p = new();
-            p.ProductName = Request.Form["nombre"];
+            p.ProductName = Request.Form["nombre"].ToString();
             p.ProducerID = 20464358;
             p.Stock = int.Parse(Request.Form["stock"]);
-            p.ProductType = Request.Form["tipo"];
+            p.ProductType = Request.Form["tipo"].ToString();
             p.Price = float.Parse(Request.Form["precio"]);
-            p.SellAdress = Request.Form["adress"];
-            p.ProductImage = Request.Form["url"];
+            p.SellAdress = Request.Form["adress"].ToString();
+            p.ProductImage = Request.Form["url"].ToString();
             input.InsertProducto(p);
         }
     }
