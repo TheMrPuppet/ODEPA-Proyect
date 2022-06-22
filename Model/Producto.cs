@@ -47,4 +47,120 @@ namespace ODEPA_.Model
 
         public byte[] ProductImage { get => productImage; set => productImage = value; }
     }
+
+    //-------------------MÉTODOS--------------------------------------------------
+    public List<Producto> listar()
+    {
+        var productos = new List<Producto>();
+        string cadena = "SELECT * FROM PRODUCTO";
+        try
+        {
+            using (var contenedor = new Model1())
+            {
+                productos = contenedor.Database.SqlQuery<Producto>(cadena).ToList();
+            }
+        }
+        catch (Exception)
+        {
+
+            //throw;
+        }
+        return productos;
+    }
+
+    public Boolean Insertar(int productID, string productName, int stock, string productType, float price, string productImage)
+    {
+        bool estado = false;
+        string cadena = "'" + productID + "',";
+        cadena = cadena + "'" + productID + "',";
+        cadena = cadena + "'" + stock + "'";
+        cadena = cadena + "'" + productType + "'";
+        cadena = cadena + "'" + price + "'";
+        cadena = cadena + "'" + productImage + "'";
+        try
+        {
+            using (var cnx = new Model1())
+            {
+                int r = cnx.Database.ExecuteSqlCommand("INSERT INTO PRODUCTO VALUES (" + cadena + ")");
+                if (r == 1)
+                {
+                    estado = true;
+                }
+            }
+        }
+        catch (Exception)
+        {
+            estado = false;
+            //throw;
+        }
+        return estado;
+    }
+    public Producto un_registro(int productID)
+    {
+        var registro = new Producto();
+        try
+        {
+            using (var cnx = new Model1())
+            {
+                registro = cnx.Producto.Where(a => a.id_alu == productID).Single();
+            }
+        }
+        catch (Exception)
+        {
+
+            //throw;
+        }
+        return registro;
+    }
+
+    public Boolean Actualizar(int productID, string productName, int stock, string productType, float price, string productImage)
+    {
+        bool estado = false;
+        string cadena = "id_pro='" + productID + "', nombre_pro='" + productName + "', stock='" + stock + "', tipo_pro='" + productType + "', precio='" + price + "', img='" + productImage + "'";
+        try
+        {
+            using (var cnx = new Model1())
+            {
+                int r = cnx.Database.ExecuteSqlCommand("UPDATE PRODUCTO SET " + cadena + " WHERE id_pro=" + productID);
+                if (r == 1)
+                {
+                    estado = true;
+                }
+            }
+        }
+        catch (Exception)
+        {
+            estado = false;
+            //throw;
+        }
+        return estado;
+    }
+
+    public Boolean Eliminar(int productID)
+    {
+        bool estado = false;
+        try
+        {
+            using (var cnx = new Model1())
+            {
+                int r = cnx.Database.ExecuteSqlCommand("DELETE FROM PRODUCTO WHERE id_pro=" + productID);
+                if (r == 1)
+                {
+                    estado = true;
+                }
+            }
+        }
+        catch (Exception)
+        {
+            estado = false;
+            //throw;
+        }
+        return estado;
+    }
+
+
+}
+
+
+
 }
