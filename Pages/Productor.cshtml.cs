@@ -13,9 +13,10 @@ namespace ODEPA_.Pages
 {
     public class ProductorModel : PageModel
     {
-        private string correo;
-        public void OnGetLogin()
+        public string c;
+        public void OnGetLogin(string correo)
         {
+            c = correo;
         }
 
 
@@ -25,7 +26,7 @@ namespace ODEPA_.Pages
             Producto p = new();
             Output output = new();
             Productor pr = new();
-            pr = output.GetProductor(correo);
+            pr = output.GetProductor(c);
             p.ProductName = Request.Form["nombre"].ToString();
             p.ProducerID = pr.Prut;
             p.Stock = int.Parse(Request.Form["stock"]);

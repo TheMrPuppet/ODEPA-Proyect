@@ -23,7 +23,7 @@ namespace ODEPA_.Pages
             {
                 if(input.CheckPW(Request.Form["correo"].ToString(), Request.Form["pw"].ToString()))
                 {
-                    return RedirectToPage("Productor");
+                    return RedirectToPage("Productor","Login", new { correo = Request.Form["correo"].ToString().Trim() });
                 }
                 else
                 {
