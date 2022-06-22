@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ODEPA_.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ODEPA_.Controllers
 {
     public class CuentaController : Controller
     {
-        private Producto pro = new Producto();
+        /*private Producto pro = new Producto();
         [HttpGet]
         public ActionResult Index()
         {
@@ -64,7 +65,7 @@ namespace ODEPA_.Controllers
                 ViewBag.res = "El producto algo";
                 return View(pro.un_registro(productID));
             }
-        }
+        }*/
     }
 }
 

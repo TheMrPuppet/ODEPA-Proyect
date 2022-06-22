@@ -15,14 +15,12 @@ namespace ODEPA_.Model
         private string productType;
         private float price;
         private string sellAdress;
-        private double latitude;
-        private double longitude;
-        private string productImage;
+        private byte[] productImage;
 
         public Producto() { }
 
         public Producto(int productID, string productName, int producerID, int stock, string productType,
-            float price, string sellAdress, double latitude, double longitude, string productImage)
+            float price, string sellAdress, byte[] productImage)
         {
             this.productID = productID;
             this.productName = productName;
@@ -31,8 +29,6 @@ namespace ODEPA_.Model
             this.productType = productType;
             this.price = price;
             this.sellAdress = sellAdress;
-            this.latitude = latitude;
-            this.longitude = longitude;
             this.productImage = productImage;
         }
 
@@ -43,8 +39,12 @@ namespace ODEPA_.Model
         public string ProductType { get => productType; set => productType = value; }
         public float Price { get => price; set => price = value; }
         public string SellAdress { get => sellAdress; set => sellAdress = value; }
-        public double Latitude { get => latitude; set => latitude = value; }
-        public double Longitude { get => longitude; set => longitude = value; }
-        public string ProductImage { get => productImage; set => productImage = value; }
+
+        internal bool Actualizar(int productID, string productName, int stock, string productType, float price, string productImage)
+        {
+            throw new NotImplementedException();
+        }
+
+        public byte[] ProductImage { get => productImage; set => productImage = value; }
     }
 }

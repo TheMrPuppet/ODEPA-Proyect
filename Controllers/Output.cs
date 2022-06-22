@@ -18,6 +18,7 @@ namespace ODEPA_.Controllers
             Producto product;
             Connection db;
             string sql = "select * from productos;";
+            string sql2 = "select * from productos;";
             if (id != -1)
                 sql = "select * from productos where productid=" + id + " ;";
             try
@@ -31,6 +32,7 @@ namespace ODEPA_.Controllers
                 db = new Connection();
                 DataTable dt = db.EjecutarConsulta(cmd);
 
+
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     product = new Producto();
@@ -41,9 +43,6 @@ namespace ODEPA_.Controllers
                     product.ProductType = dt.Rows[i]["type"].ToString();
                     product.Price = float.Parse(dt.Rows[i]["price"].ToString());
                     product.SellAdress = dt.Rows[i]["selladress"].ToString();
-                    product.Latitude = double.Parse(dt.Rows[i]["latitude"].ToString());
-                    product.Longitude = double.Parse(dt.Rows[i]["longitude"].ToString());
-                    product.ProductImage = dt.Rows[i]["productimage"].ToString();
 
                     lista.Add(product);
                 }

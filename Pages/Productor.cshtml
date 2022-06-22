@@ -1,0 +1,59 @@
+﻿@page
+@model ODEPA_.Pages.ProductorModel
+@using ODEPA_.Model
+@using ODEPA_.Controllers
+@{
+
+}
+
+<form method="post"
+      enctype="multipart/form-data">
+    <div style="text-align:left">
+        Nombre: <input type="text" id="nombre" name="nombre" required />
+        Stock: <input type="number" id="stock" name="stock" required />
+        Tipo: <input type="text" id="tipo" name="tipo" required />
+        Precio: <input type="number" id="precio" name="precio" required />
+        Dirección: <input type="text" id="adress" name="adress" required />
+
+        Imagen: <input type="file" id="file1"
+                       name="file1"
+                       multiple="multiple" />
+        <button type="submit">Agregar Producto</button>
+    </div>
+</form>
+@{
+    List<Producto> lista;
+    Output servicios = new();
+    lista = servicios.ListarProductos(-1);
+
+}
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Stock</th>
+            <th>Precio</th>
+            <th>Dirección</th>
+            <th>Imagen</th>
+            <th>Actualizar</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in lista)
+        {
+        <tr>
+            <td>@c.ProductName</td>
+            <td>@c.ProductType</td>
+            <td>@c.Stock</td>
+            <td>@c.Price</td>
+            <td>@c.SellAdress</td>
+            <td>@c.ProductImage</td>
+            <td><a href="Actualizar?Id=@c.ProductID">Actualizar</a></td>
+            <td><a href="Eliminar?Id=@c.ProductID">Eliminar</a></td>
+
+        </tr>
+        }
+    </tbody>
+</table>

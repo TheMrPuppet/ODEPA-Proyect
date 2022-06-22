@@ -152,10 +152,9 @@ namespace ODEPA_.Controllers
                     "       '" + item.ProductType + "', " +
                     "       " + item.Price + ", " +
                     "       '" + item.SellAdress + "', " +
-                    "       " + item.Latitude + ", " +
-                    "       " + item.Longitude + ", " +
-                    "       '" + item.ProductImage + "');";
-
+                    "       @Image);";
+                SqlParameter param = cmd.Parameters.Add("@Image", SqlDbType.VarBinary);
+                param.Value = item.ProductImage;
                 cmd.CommandText = sql;
 
                 db.EjecutarConsulta(cmd);
@@ -184,8 +183,6 @@ namespace ODEPA_.Controllers
                     "       type='" + item.ProductType + "', " +
                     "       price=" + item.Price + ", " +
                     "       selladress='" + item.SellAdress + "', " +
-                    "       latitude=" + item.Latitude + ", " +
-                    "       longitude=" + item.Longitude + ", " +
                     "       productimage='" + item.ProductImage + "'" +
                     " where productid ="+item.ProductID+";";
 
