@@ -1,0 +1,24 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using ODEPA_.Model;
+using ODEPA_.Controllers;
+using Microsoft.AspNetCore.Http;
+
+namespace ODEPA_.Pages
+{
+    public class RegistroModel : PageModel
+    {
+        public void OnGet()
+        {
+        }
+
+        public void OnPost()
+        {
+
+        }
+    }
+}

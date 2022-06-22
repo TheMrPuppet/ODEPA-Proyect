@@ -51,20 +51,16 @@ namespace ODEPA_.Controllers
             bool issame = false;
             try
             {
-                sql = $"Select * from cuenta;";
+                sql = $"Select * from cuenta where correo ='"+correo.Trim()+"';";
 
 
                 cmd.CommandText = sql;
 
                 DataTable dt = db.EjecutarConsulta(cmd);
 
-                for (int i = 0; i < dt.Rows.Count; i++)
+                if (dt.Rows.Count != 0)
                 {
-                    if (dt.Rows[i]["correo"].ToString() == correo)
-                    {
-                        issame = true;
-                        break;
-                    }
+                    issame = true;
                 }
                 return issame;
             }
@@ -111,7 +107,7 @@ namespace ODEPA_.Controllers
             bool iscorrect = false;
             try
             {
-                sql = $"Select * from cuenta where correo ='"+correo+"';";
+                sql = $"Select * from cuenta where correo ='"+correo.Trim()+"';";
 
                 
                 cmd.CommandText = sql;
@@ -120,7 +116,7 @@ namespace ODEPA_.Controllers
 
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
-                    if (dt.Rows[i]["pw"].ToString() == pw)
+                    if (dt.Rows[i]["password"].ToString().Trim().Equals(pw.Trim()))
                     {
                         iscorrect= true;
                         break;

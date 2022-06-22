@@ -56,6 +56,47 @@ namespace ODEPA_.Controllers
 
             }
         }
+        public List<Producto> BuscarProductos(string id)
+        {
+            List<Producto> lista = new();
+            Producto product;
+            Connection db;
+            string sql = "select * from productos where name='"+id+"';";
+
+            try
+            {
+
+                SqlCommand cmd = new()
+                {
+                    CommandType = CommandType.Text,
+                    CommandText = sql
+                };
+                db = new Connection();
+                DataTable dt = db.EjecutarConsulta(cmd);
+
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    product = new Producto();
+                    product.ProductID = int.Parse(dt.Rows[i]["productid"].ToString());
+                    product.ProductName = dt.Rows[i]["name"].ToString();
+                    product.ProducerID = int.Parse(dt.Rows[i]["producerid"].ToString());
+                    product.Stock = int.Parse(dt.Rows[i]["stock"].ToString());
+                    product.ProductType = dt.Rows[i]["type"].ToString();
+                    product.Price = float.Parse(dt.Rows[i]["price"].ToString());
+                    product.SellAdress = dt.Rows[i]["selladress"].ToString();
+                    product.ProductImage = dt.Rows[i]["productimage"].ToString();
+                    lista.Add(product);
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+
+            }
+        }
 
         public List<Productor> ListarProductores(int id)
         {
@@ -89,6 +130,42 @@ namespace ODEPA_.Controllers
                     lista.Add(productor);
                 }
                 return lista;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+
+            }
+        }
+
+        public Productor GetProductor(string correo)
+        {
+            Productor p = new();
+            Connection db;
+            string sql = "select * from productores where pcorreo ='"+correo+"';";
+            try
+            {
+
+                SqlCommand cmd = new()
+                {
+                    CommandType = CommandType.Text,
+                    CommandText = sql
+                };
+                db = new Connection();
+                DataTable dt = db.EjecutarConsulta(cmd);
+
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    p = new Productor();
+                    p.Prut = int.Parse(dt.Rows[i]["prut"].ToString());
+                    p.Prutid = dt.Rows[i]["prutid"].ToString();
+                    p.Pnombre = dt.Rows[i]["pnombre"].ToString();
+                    p.Pcorreo = dt.Rows[i]["pcorreo"].ToString();
+                    p.Padress = dt.Rows[i]["padress"].ToString();
+
+                }
+                return p;
             }
             catch (Exception ex)
             {

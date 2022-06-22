@@ -7,22 +7,27 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ODEPA_.Controllers;
 using ODEPA_.Model;
+using Microsoft.AspNetCore.Http;
 
 namespace ODEPA_.Pages
 {
     public class ProductorModel : PageModel
     {
-        public void OnGet()
+        private string correo;
+        public void OnGetLogin()
         {
         }
 
 
-        public void OnPost()
+        public void OnPostLogin()
         {
             Input input = new();
             Producto p = new();
+            Output output = new();
+            Productor pr = new();
+            pr = output.GetProductor(correo);
             p.ProductName = Request.Form["nombre"].ToString();
-            p.ProducerID = 20464358;
+            p.ProducerID = pr.Prut;
             p.Stock = int.Parse(Request.Form["stock"]);
             p.ProductType = Request.Form["tipo"].ToString();
             p.Price = float.Parse(Request.Form["precio"]);

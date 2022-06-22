@@ -7,6 +7,9 @@
 @{
 
 }
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
 <form method="post">
     <div style="text-align:left">
@@ -40,17 +43,17 @@
     <tbody>
         @foreach (var c in lista)
         {
-        <tr>
-            <td>@c.ProductName</td>
-            <td>@c.ProductType</td>
-            <td>@c.Stock</td>
-            <td>@c.Price</td>
-            <td>@c.SellAdress</td>
-            <td><img src=@c.ProductImage alt="" style="width:200px; height:auto;"></td>
-            <td><a href="Actualizar?Id=@c.ProductID">Actualizar</a></td>
-            <td><a href="Eliminar?Id=@c.ProductID">Eliminar</a></td>
+            <tr>
+                <td>@c.ProductName</td>
+                <td>@c.ProductType</td>
+                <td>@c.Stock</td>
+                <td>@c.Price</td>
+                <td>@c.SellAdress</td>
+                <td><img src=@c.ProductImage alt="" style="width:200px; height:auto;"></td>
+                <td><a href="Actualizar?Id=@c.ProductID">Actualizar</a></td>
+                <td><a href="Eliminar?Id=@c.ProductID">Eliminar</a></td>
 
-        </tr>
+            </tr>
         }
     </tbody>
 </table>
