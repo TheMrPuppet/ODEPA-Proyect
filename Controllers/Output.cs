@@ -56,12 +56,12 @@ namespace ODEPA_.Controllers
 
             }
         }
-        public List<Producto> BuscarProductos(string id)
+        public List<Producto> BuscarProductos(int id)
         {
             List<Producto> lista = new();
             Producto product;
             Connection db;
-            string sql = "select * from productos where name='"+id+"';";
+            string sql = "select * from productos where productid="+id+";";
 
             try
             {

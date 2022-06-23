@@ -1,11 +1,41 @@
 ﻿@page
 @model IndexModel
+@using ODEPA_.Controllers
+@using ODEPA_.Model 
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Página Principal";
 }
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <div class="text-center">
-    <h1 class="display-4">Bienvenido</h1>
+    <h1 class="display-4">Bienvenido al centro de ventas ODEPA</h1>
 </div>
+
+
+<h3>Lista de Productos</h3>
+<table border="1">
+    <tr>
+        <th width="100">  Nombre  </th>
+        <th width="100">  Stock  </th>
+        <th width="100">  Tipo  </th>
+        <th width="100">  Precio  </th>
+        <th width="100">  Dirección  </th>
+        <th width="100">  Imagen  </th>
+        <th width="100"></th>
+    </tr>
+    @foreach (var product in Model.productos)
+    {
+        <tr align="center">
+            <td>@product.ProductName</td>
+            <td>@product.Stock</td>
+            <td>@product.ProductType</td>
+            <td>$@product.Price</td>
+            <td>@product.SellAdress</td>
+            <td><img src=@product.ProductImage width="120" height="100" /></td>
+            <td>
+                <a asp-page="Cart" id="Cart" asp-page-handler="buynow" asp-route-id="@product.ProductID">Agregar al Carro</a>
+            </td>
+        </tr>
+    }
+</table>
