@@ -14,27 +14,66 @@ namespace ODEPA_.Pages
     public class ProductorModel : PageModel
     {
         public string c;
+        public int rut;
         public void OnGetLogin(string correo)
         {
-            c = correo;
+            try{
+                
+                c = correo.Trim();
+                Output output = new();
+                Productor pr = new();
+                pr = output.GetProductor(c);
+                
+                rut = int.Parse(pr.Prut.ToString().Trim());
+                Console.WriteLine("-"+pr.Prut+"-");
+
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
 
+        public void OnPostDelete(int id)
+        {
+            try
+            {
+                Input input = new();
+                input.DeleteProducto(id);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
 
-        public void OnPostLogin()
+        }
+
+        public void OnPost()
         {
             Input input = new();
             Producto p = new();
-            Output output = new();
-            Productor pr = new();
-            pr = output.GetProductor(c);
-            p.ProductName = Request.Form["nombre"].ToString();
-            p.ProducerID = pr.Prut;
-            p.Stock = int.Parse(Request.Form["stock"]);
-            p.ProductType = Request.Form["tipo"].ToString();
-            p.Price = float.Parse(Request.Form["precio"]);
-            p.SellAdress = Request.Form["adress"].ToString();
-            p.ProductImage = Request.Form["url"].ToString();
-            input.InsertProducto(p);
+            try
+            {
+                p.ProductName = Request.Form["nombre"].ToString();
+                p.ProducerID = int.Parse(Request.Form["rut"]);
+                Console.WriteLine("-" + p.ProducerID + "-");
+                p.Stock = int.Parse(Request.Form["stock"]);
+                p.ProductType = Request.Form["tipo"].ToString();
+                p.Price = float.Parse(Request.Form["precio"]);
+                p.SellAdress = Request.Form["adress"].ToString();
+                p.ProductImage = Request.Form["url"].ToString();
+                input.InsertProducto(p);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+
+            }
+
+
         }
     }
 }

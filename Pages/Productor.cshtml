@@ -14,6 +14,7 @@
 
 <form method="post">
     <div style="text-align:left">
+        <input hidden="hidden" id="rut" name="rut" value="@rut" class="form-control" />
         Nombre: <input type="text" id="nombre" name="nombre" required />
         Stock: <input type="number" id="stock" name="stock" required />
         Tipo: <input type="text" id="tipo" name="tipo" required />
@@ -52,7 +53,12 @@
                 <td>@c.SellAdress</td>
                 <td><img src=@c.ProductImage alt="" style="width:200px; height:auto;"></td>
                 <td><a href="Actualizar?Id=@c.ProductID">Actualizar</a></td>
-                <td><a href="Eliminar?Id=@c.ProductID">Eliminar</a></td>
+                <td>
+                    <form asp-page-handler="Delete" method="post" asp-route-id="@c.ProductID"
+                          onclick="return confirm('Are you sure you want to delete this?')">
+                        <button type="submit" class="btn btn-default"><i class="fas fa-trash-alt text-white"></i></button>
+                    </form>
+                </td>
 
             </tr>
         }
